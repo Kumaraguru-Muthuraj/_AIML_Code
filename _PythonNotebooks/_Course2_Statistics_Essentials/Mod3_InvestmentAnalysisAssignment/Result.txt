@@ -1,0 +1,87 @@
+
+***************************************************
+Sector-wise Investment details for  USA
+***************************************************
+1) Total number of investments (count) 12,149
+2) Total amount of investment (USD) $108,521,860,586
+
+3, 4, 5, 6, 7, 8) TOP 3 SECTORS (based on count of investments)
+                               main_sector  Number of Investments
+0                                   OTHERS                   2950
+1  SOCIAL, FINANCE, ANALYTICS, ADVERTISING                   2714
+2               CLEANTECH / SEMICONDUCTORS                   2350
+
+TOP 1st SECTOR BY COUNT IS -  OTHERS
+TOP 2nd SECTOR BY COUNT IS -  SOCIAL, FINANCE, ANALYTICS, ADVERTISING
+9)
+FOR THE TOP SECTOR "OTHERS" COUNT-WISE, WHICH COMPANY 
+RECEIVED THE HIGHEST INVESTMENT?
+***************************************************
+COMPANY WEBLINK - /organization/virtustream, COMPANY NAME - Virtustream, 
+    INVESTMENT AMOUNT - $64,300,000
+10)
+FOR THE TOP SECTOR "SOCIAL, FINANCE, ANALYTICS, ADVERTISING" COUNT-WISE, WHICH COMPANY 
+RECEIVED THE HIGHEST INVESTMENT?
+***************************************************
+COMPANY WEBLINK - /organization/shotspotter, COMPANY NAME - SST Inc. (Formerly ShotSpotter), 
+    INVESTMENT AMOUNT - $67,933,006
+
+
+
+***************************************************
+Sector-wise Investment details for  GBR
+***************************************************
+1) Total number of investments (count) 628
+2) Total amount of investment (USD) $5,436,843,539
+
+3, 4, 5, 6, 7, 8) TOP 3 SECTORS (based on count of investments)
+                               main_sector  Number of Investments
+0                                   OTHERS                    147
+1  SOCIAL, FINANCE, ANALYTICS, ADVERTISING                    133
+2               CLEANTECH / SEMICONDUCTORS                    130
+
+TOP 1st SECTOR BY COUNT IS -  OTHERS
+TOP 2nd SECTOR BY COUNT IS -  SOCIAL, FINANCE, ANALYTICS, ADVERTISING
+9)
+FOR THE TOP SECTOR "OTHERS" COUNT-WISE, WHICH COMPANY 
+RECEIVED THE HIGHEST INVESTMENT?
+***************************************************
+COMPANY WEBLINK - /organization/electric-cloud, COMPANY NAME - Electric Cloud, 
+    INVESTMENT AMOUNT - $37,000,000
+10)
+FOR THE TOP SECTOR "SOCIAL, FINANCE, ANALYTICS, ADVERTISING" COUNT-WISE, WHICH COMPANY 
+RECEIVED THE HIGHEST INVESTMENT?
+***************************************************
+COMPANY WEBLINK - /organization/celltick-technologies, COMPANY NAME - Celltick Technologies, 
+    INVESTMENT AMOUNT - $37,500,000
+
+
+
+***************************************************
+Sector-wise Investment details for  IND
+***************************************************
+1) Total number of investments (count) 330
+2) Total amount of investment (USD) $2,976,543,602
+
+3, 4, 5, 6, 7, 8) TOP 3 SECTORS (based on count of investments)
+                               main_sector  Number of Investments
+0                                   OTHERS                    110
+1  SOCIAL, FINANCE, ANALYTICS, ADVERTISING                     60
+2               NEWS, SEARCH AND MESSAGING                     52
+
+TOP 1st SECTOR BY COUNT IS -  OTHERS
+TOP 2nd SECTOR BY COUNT IS -  SOCIAL, FINANCE, ANALYTICS, ADVERTISING
+9)
+FOR THE TOP SECTOR "OTHERS" COUNT-WISE, WHICH COMPANY 
+RECEIVED THE HIGHEST INVESTMENT?
+***************************************************
+COMPANY WEBLINK - /organization/firstcry-com, COMPANY NAME - FirstCry.com, 
+    INVESTMENT AMOUNT - $39,000,000
+10)
+FOR THE TOP SECTOR "SOCIAL, FINANCE, ANALYTICS, ADVERTISING" COUNT-WISE, WHICH COMPANY 
+RECEIVED THE HIGHEST INVESTMENT?
+***************************************************
+COMPANY WEBLINK - /organization/manthan-systems, COMPANY NAME - Manthan Systems, 
+    INVESTMENT AMOUNT - $50,700,000
+from  matplotlib.ticker import FuncFormatter
+​
