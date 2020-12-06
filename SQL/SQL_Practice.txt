@@ -1,0 +1,388 @@
+---------------------------------------------------------------------------------------------------------
+Actor acted the most in films
+------------------------------------------
+select concat(First_name, ' ', Last_name) as Full_name
+from actor a
+inner join film_actor f
+using (actor_id)
+group by f.actor_id
+order by count(f.actor_id) desc
+limit 1;
+
+---------------------------------------------------------------------------------------------------------
+3rd Most Acted actor
+------------------------------------------
+select concat(first_name, ' ', last_name) as Actor_name
+from actor
+inner join film_actor
+using (actor_id)
+group by actor_name
+order by count(film_id) desc
+limit 2, 1;
+
+---------------------------------------------------------------------------------------------------------
+Most revenue film
+------------------------------------------
+select
+f.title as title
+from payment p inner join rental r inner join inventory i inner join film f
+where 
+p.rental_id = r.rental_id and r.inventory_id = i.inventory_id and i.film_id = f.film_id
+group by f.title // Should have been f.title_id
+order by sum(p.amount) desc
+limit 1;
+
+select Title
+from film
+inner join inventory
+using (film_id)
+inner join rental
+using (inventory_id)
+inner join payment
+using (rental_id)
+group by title
+order by sum(amount) desc
+limit 1;
+
+---------------------------------------------------------------------------------------------------------
+Rented highest number of times
+------------------------------------------
+select
+f.title as title
+from rental r inner join inventory i inner join film f
+where 
+r.inventory_id = i.inventory_id and i.film_id = f.film_id
+group by f.title 
+order by count(f.title) desc
+limit 1;
+
+---------------------------------------------------------------------------------------------------------
+City that gave most revenue
+------------------------------------------
+select 
+c.city as city
+from payment p inner join customer cus inner join address a inner join city c
+where
+p.customer_id = cus.customer_id 
+and cus.address_id = a.address_id and a.city_id = c.city_id
+group by c.city
+order by sum(p.amount) desc
+limit 1;
+
+---------------------------------------------------------------------------------------------------------
+Write a query to find out how many times a particular movie category is rented. 
+---------------------------------------------------------------------------------------------------------
+select 
+c.name as Name, count(*) as Rental_Count
+from category c inner join film_category fc inner join film f inner join inventory i inner join rental r
+where
+c.category_id = fc.category_id and fc.film_id = f.film_id and f.film_id = i.film_id and i.inventory_id = r.inventory_id
+group by c.name
+order by Rental_Count desc
+
+---------------------------------------------------------------------------------------------------------
+Write a query to find the full names of customers who have rented sci-fi movies more than 5 times. 
+Arrange these names in the alphabetical order.
+---------------------------------------------------------------------------------------------------------
+select
+ concat(cu.first_name, ' ',cu.last_name) as customer_name
+from 
+category ca inner join 
+film_category fc inner join 
+film f inner join 
+inventory i inner join 
+rental r inner join 
+customer cu
+where
+ca.category_id = fc.category_id and 
+fc.film_id = f.film_id and 
+f.film_id = i.film_id and 
+i.inventory_id = r.inventory_id and 
+r.customer_id = cu.customer_id and
+ca.name = 'Sci-Fi'
+group by customer_name
+having count(*) > 5
+order by customer_name
+
+From UpGrad
+select concat(first_name, ' ', last_name) as Customer_name
+from category
+inner join film_category
+using (category_id)
+inner join film
+using (film_id)
+inner join inventory
+using (film_id)
+inner join rental
+using (inventory_id)
+inner join customer
+using (customer_id)
+where name = 'Sci-Fi'
+group by Customer_name
+having count(rental_id) > 5
+order by Customer_name;
+
+---------------------------------------------------------------------------------------------------------
+Write a query to find the full names of those customers who have rented at least 
+one movie and belong to the city Arlington.
+Customer_name
+MARY SMITH
+---------------------------------------------------------------------------------------------------------
+select 
+concat (cu.first_name, ' ', cu.last_name) as customer_name 
+from
+city c inner join address a inner join customer cu inner join rental r
+where 
+c.city_id = a.city_id and a.address_id = cu.address_id and cu.customer_id = r.customer_id
+and c.city = 'Arlington'
+group by customer_name
+
+---------------------------------------------------------------------------------------------------------
+Write a query to find the number of movies rented across each country. Display only those countries where at least one movie was rented. Arrange these countries in the alphabetical order.
+---------------------------------------------------------------------------------------------------------
+
+select 
+ct.country as Country, count(rental_id) as Rental_Count
+from
+country ct inner join city c inner join address a inner join customer cu inner join rental r
+where 
+ct.country_id = c.country_id and c.city_id = a.city_id and a.address_id = cu.address_id and cu.customer_id = r.customer_id
+group by Country
+order by Country asc
+
+---------------------------------------------------------------------------------------------------------
+Partition and Rank()
+----------------------------
+select orderNumber, quantityOrdered * priceEach as individualOrderAmount,
+sum(quantityOrdered * priceEach) over (partition by orderNumber) as totalOrderAmount
+from orderdetails
+order by orderNumber, individualOrderAmount desc;
+
+
+---------------------------------------------------------------------------------------------------------
+Rewrite below SQL with a named window
+---------------------------------------------------------------------------------------------------------
+select *,
+rank() over w 'Rank',
+dense_rank() over w 'Dense Rank',
+percent_rank() over w 'Percent Rank'
+from shipping_dimen
+window w as (partition by Ship_Mode order by count(*))
+
+---------------------------------------------------------------------------------------------------------
+select 
+Year, Runs, 
+avg(Runs) over (order by Year rows 4 preceding) 'Moving Average'
+from Kohli_Batting
+---------------------------------------------------------------------------------------------------------
+
+(case
+	when col1 < val1 then 'Value Display1'
+	when col2 < val2 then 'Value Display2'
+	else 'Value Disp3'
+end) as Name_Col
+
+---------------------------------------------------------------------------------------------------------
+select Name, Salary, 
+(case
+	when Salary <= 2.5 then 0
+	when 2.5 < Salary and Salary <= 5.0 then round(0.05 * (Salary - 2.5) * 100000)
+	when 5.0 < Salary and Salary <= 10.0 then round(12500 + 0.2 * (Salary - 5.0) * 100000)
+	when 10.0 < Salary then round(112500 + 0.3 * (Salary - 10.0) * 100000)
+end) as 'Tax Amount'
+from
+Salaries
+
+---------------------------------------------------------------------------------------------------------
+
+select firstName , lastName, jobTitle
+from employees 
+where jobTitle != 'Sales Rep'
+order by jobTitle, firstName
+
+
+select employeeNumber, extension
+from employees 
+where extension like '%1'
+order by employeeNumber
+
+select lastName
+from employees 
+order by lastName
+
+select employeeNumber, firstName, lastName
+from employees
+where employeeNumber like '1%2'
+order by firstName
+
+
+select productCode, priceEach
+from orderDetails
+where productCode like '%_32'
+order by priceEach desc
+
+select productCode, priceEach
+from orderdetails
+where productcode like '%\_32%'
+order by priceEach desc;
+##Non alphanumeric characters need to be escaped
+
+select 
+round(min(quantityOrdered * priceEach)) as minAmount, 
+round(max(quantityOrdered * priceEach)) as maxAmount
+from orderdetails
+group by productCode   
+
+select min(priceEach * quantityOrdered) as minAmount, 
+max(priceEach * quantityOrdered) as maxAmount
+from orderdetails;
+
+
+select 
+sum(quantityOrdered * priceEach) as totalAmount, 
+avg(quantityOrdered * priceEach) as avgAmount
+from orderdetails
+
+
+select 
+officeCode, count(officeCode) as no_Of_Employees
+from employees 
+group by officeCode 
+order by officeCode 
+
+select 
+round(sum(quantityOrdered * priceEach)) as roundedAmount, orderLineNumber
+from orderdetails
+group by orderLineNumber
+order by roundedAmount desc
+
+
+Write a query to retrieve order line numbers having rounded line-wise order amounts of less than 1,00,000. Arrange them in the decreasing order of their amounts.
+
+select 
+sum(round(quantityOrdered * priceEach)) as roundedAmount, orderLineNumber
+from orderdetails
+group by orderLineNumber
+having roundedAmount < 100000 
+order by roundedAmount desc
+
+select round(sum(priceEach * quantityOrdered)) as roundedAmount, orderLineNumber
+from orderdetails
+group by orderLineNumber
+having roundedAmount < 100000
+order by roundedAmount desc;
+
+Write a query to find the month number (Eg: 4 corresponds to April) in which the most number of payments were made.
+
+select (MONTH(payment_date) + 1) as Payment_month, count(*) as No_of_payments
+from payment
+group by Payment_month
+order by No_of_payments desc
+limit 1
+
+
+select round(avg(f.length)) as avg_Length,  c.name as name
+from
+Film as f inner join film_category as fc inner join category c
+where
+f.film_id = fc.film_id and fc.category_id = c.category_id
+group by Name
+order by avg_Length desc
+
+
+Write a query to find the number of occurrences of each film_category in each city. Arrange them in the decreasing order of their category count.
+name, city, category_count
+
+select name, c.city as ccity, count(ccity)
+from 
+category inner join 
+film_category inner join 
+film inner join 
+inventory inner join 
+store inner join 
+address inner join 
+city as c
+where category.category_id = film_category.category_id and
+film_category.film_id = film.film_id and
+film.film_id = inventory.film_id and
+inventory.store_id = store.store_id and
+store.address_id = address.address_id and 
+address.city_id = c.city_id
+group by name, ccity 
+
+select name, city, count(category_id) as category_count
+from category
+inner join film_category
+using (category_id)
+inner join inventory
+using (film_id)
+inner join store
+using (store_id)
+inner join address
+using (address_id)
+inner join city
+using (city_id)
+group by name, city
+order by category_count desc;
+
+select fl.film_id as film_id, fl.title as Title
+country co inner join 
+city ci inner join 
+address ad inner join
+store st inner join
+inventory inv inner join
+film fl inner join
+where co.country_id = ci.country_id and
+ci.city_id = ad.city_id and
+ad.address_id = st.address_id and
+st.store_id = inv.store_id and
+inv.film_id = fl.film_id
+order by Title
+
+
+
+
+
+select
+First_name, Last_name
+from customer
+where 
+SUBSTRING(first_name, 0, 1) IN ('A', 'J', 'T') or
+last_name like '%on'
+order by First_name
+
+---------------------------------------------------------------------------------------------------------
+use upgrad;
+# Write your code below
+with score_opp as (
+select 
+opponent, 
+sum((case
+	when goals_scored > goals_conceded then 3
+	when goals_scored = goals_conceded then 1
+	when goals_scored < goals_conceded then 0
+end)) as score 
+from 
+(
+select opponent, goals_scored, goals_conceded from home
+union all
+select opponent, goals_scored, goals_conceded from away
+) as matches
+group by opponent 
+order by score desc
+)
+select 
+count(*)
+from 
+score_opp 
+where 
+score = 6
+
+OR
+
+use upgrad;
+
+select count(*)
+from home inner join away on home.opponent = away.opponent
+where home.goals_scored > home.goals_conceded and away.goals_scored > away.goals_conceded;
+---------------------------------------------------------------------------------------------------------
