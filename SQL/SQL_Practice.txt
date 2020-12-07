@@ -386,3 +386,27 @@ select count(*)
 from home inner join away on home.opponent = away.opponent
 where home.goals_scored > home.goals_conceded and away.goals_scored > away.goals_conceded;
 ---------------------------------------------------------------------------------------------------------
+select 
+student_id, marks, 
+(case
+	when marks%10 = 0 then 'yes'
+	else 'no'
+end) as div_by_ten
+from 
+marks
+order by student_id asc
+---------------------------------------------------------------------------------------------------------
+
+# Write your code below
+SET @DN = (SELECT SUBSTRING(address, 1, POSITION(" " IN address)) FROM employee where ssn = '123456789');
+
+SELECT ssn,  
+avg(ABS(SUBSTRING(address, 1, POSITION(" " IN address)) - @DN)) over (order by ssn)
+FROM employee
+where ssn != '123456789'
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------
