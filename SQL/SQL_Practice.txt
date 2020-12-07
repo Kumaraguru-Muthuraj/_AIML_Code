@@ -103,7 +103,7 @@ ca.name = 'Sci-Fi'
 group by customer_name
 having count(*) > 5
 order by customer_name
-
+---------------------------------------------------------------------------------------------------------
 From UpGrad
 select concat(first_name, ' ', last_name) as Customer_name
 from category
@@ -339,10 +339,6 @@ st.store_id = inv.store_id and
 inv.film_id = fl.film_id
 order by Title
 
-
-
-
-
 select
 First_name, Last_name
 from customer
@@ -350,7 +346,6 @@ where
 SUBSTRING(first_name, 0, 1) IN ('A', 'J', 'T') or
 last_name like '%on'
 order by First_name
-
 ---------------------------------------------------------------------------------------------------------
 use upgrad;
 # Write your code below
@@ -386,6 +381,10 @@ select count(*)
 from home inner join away on home.opponent = away.opponent
 where home.goals_scored > home.goals_conceded and away.goals_scored > away.goals_conceded;
 ---------------------------------------------------------------------------------------------------------
+Even marks
+Description
+Consider a table consisting the marks of students in a mathematics test along with their unique student_id. Write a query to determine which students got the marks that is divisible by 10 and which students did not. Make sure that the output is ordered by student_id.
+
 select 
 student_id, marks, 
 (case
@@ -396,17 +395,25 @@ from
 marks
 order by student_id asc
 ---------------------------------------------------------------------------------------------------------
+Average distance
+Description
+Consider a table employee storing the details of the employee. 
+
+ssn : social security number of the employee
+address : storing the address of the employee
+
+Looking at the address field in the employee table, you would notice that all the employees reside in "Fondren, Houston, TX". Consider the integer in the address field as house number. Consider the distance between the two houses as the difference in the house numbers, so the distance between house number 2 and 38 is 36 units. Write a query to determine the average distance between the house of the employee with ssn '123456789' and the other employees' houses. Print the answer to two decimal places. Make sure that the answer is formatted with a comma like x,xxx.xx . 
 
 # Write your code below
 SET @DN = (SELECT SUBSTRING(address, 1, POSITION(" " IN address)) FROM employee where ssn = '123456789');
 
-SELECT ssn,  
-avg(ABS(SUBSTRING(address, 1, POSITION(" " IN address)) - @DN)) over (order by ssn)
+SELECT FORMAT(round(AVG(ABS(SUBSTRING(address, 1, POSITION(" " IN address)) - @DN)), 2), 2)
 FROM employee
 where ssn != '123456789'
-
-
 ---------------------------------------------------------------------------------------------------------
+Topper
+Description
+Consider a table storing the marks obtained by student in five course, physics, chemistry, mathematics, history and philosophy in comma separated form. ﻿
 
 
 ---------------------------------------------------------------------------------------------------------
