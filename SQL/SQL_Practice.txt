@@ -415,5 +415,18 @@ Topper
 Description
 Consider a table storing the marks obtained by student in five course, physics, chemistry, mathematics, history and philosophy in comma separated form. ﻿
 
+use upgrad;
+
+# Write your code below
+with topper as (
+select student_id,
+(substring(marks, 1, 2) + substring(marks, 4, 2) + substring(marks, 7, 2)) / 3 as Avr
+from
+marks
+order by Avr desc
+limit 1
+)
+select student_id from topper
+
 
 ---------------------------------------------------------------------------------------------------------
