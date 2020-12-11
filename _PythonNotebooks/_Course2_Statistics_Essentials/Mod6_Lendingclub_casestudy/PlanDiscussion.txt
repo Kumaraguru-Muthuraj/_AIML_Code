@@ -1,0 +1,20 @@
+I might be wrong or incomplete in many of these, please feel free to add to these. I will create a new repo where we can make changes to all of these including this file and code.
+
+Actions:
+
+10/Dec
+1) Read the problem many times, write down the objectives, what to produce, what decisions you make and recommend the bank.
+ Why is this called Lending Club, what does the URL have. 
+2) What columns are important and what are not in the excel. 
+3) With python, analyse missed data, nulls, what to impute etc., describe. Get sense of data.
+4) Cleaning and formatting the data.
+
+11/Dec
+5) Bivariate and multi-variate analysis with pivot tables and correlation analysis.
+6) Between us, divide the columns against which we do the analysis.
+
+12/Dec 
+7) Observe insights on what factors influence the loan decision, recommend the bank what it should do. Interest rates, reduce loan amount. Discuss and change code.
+
+13/Dec
+8) Write the report, PPT, PDF. OBSERVE THE DISCUSSION FORUM FOR INPUTS.

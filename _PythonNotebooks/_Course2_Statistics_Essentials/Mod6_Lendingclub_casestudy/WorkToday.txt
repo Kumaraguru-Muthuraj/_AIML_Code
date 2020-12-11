@@ -1,0 +1,182 @@
+10/Dec
+About Lending Club:
+Largest personal finance company - 3 Major loans - personal loans, business loans, and financing of medical procedures. 
+Online interface - Lower interest rates.
+Largest source of financial loss is due to lending to risky applicants - Due to charged off customers.
+
+Objective:
+GOAL AS MENTIONED IN THE ASSIGNMENT -  Identification of risky applicants using EDA is the aim of this case study.
+The company wants to understand the driving factors (or driver variables) behind loan default, i.e. the variables which are strong indicators of default.
+Based on analysis can we come up with a function that says, reject or approve loan? OPTIONAL
+
+How to do?
+1) The consumer finance company is 'Lending Club in SFO, CA'
+Based on data given, identify patterns and recommend what should Lending Club do when a customer with a set of parameters apply for loan. 
+a) Reject loan - What reasons? What compells to reject? Can't we reduce the loan amount or increase the interest rate or reduce the tenure? Are these possible?
+b) Approve - If approve, what should be the loan approved amount? Tenure of loan, interest rate approved. Are these possible?
+
+What to extract:
+1) Is the customer good - Paying EMIs in time, past due, how many times, how many loans defaulted, any other black marks?
+2) Is the customer risky - Paid EMIs in time, once a while delayed, closed all loans in time, no other black marks
+3) Is customer good - Closed all loans in time. Good finances, no black marks.
+4) What are loan attributes and consumer attributes that influence default?
+5) Where is loan accepted column? 
+	a) Fully paid (Principal and Interest).
+	b) Current (Currently paying EMIs) - NOT defaulted.
+	c) Charged-off - Not paid EMIs for a a long time and he has defaulted.
+
+
+Results Expected
+Insights and observations from the analysis.
+Explain the results of univariate, bivariate analysis etc. in business terms.
+Include visualisations and summarise the most important results in the presentation
+ 
+Relevant columns
+1) What columns are important and what are not in the excel. 
+2) With python, analyse missed data, nulls, what to impute etc., describe. Get sense of data.
+3) Cleaning and formatting the data.
+
+What are the loan attributes?
+What are consumer attributes?
+
+--------------------Found this today from the Reject stats---------------------------------------
+RejectStats File
+Amount Requested *****
+Application Date
+Loan Title
+Risk_Score *****
+Debt-To-Income Ratio *****
+Zip Code *****
+State *****
+Employment Length *****
+Policy Code?? *****
+
+Need to do pivot tables based on the following and correlation between the 3 status values and these items
+What is Vantage Score? Why this is better than FICO score? What is important at 5 Nov 2013.****
+Anything to do with State and Zipcode?
+Debt-to-income ratio
+Employment Length
+
+-----------LoanStatNew------------------------
+acc_now_delinq - Current delinquent accounts
+acc_open_past_24mths - Number of trades 
+addr_state - State / Zip code
+all_util - Balance to credit limit
+annual_inc - Income annual
+annual_inc_joint - Co-borrowers income
+application_type - Joint?
+avg_cur_bal - Avg current balance of all loan accounts
+bc_open_to_buy - 
+bc_util
+chargeoff_within_12_mths  ****
+collection_recovery_fee ****
+collections_12_mths_ex_med ****
+delinq_2yrs ****
+delinq_amnt ****
+desc **** - Can we mine this and get some correlation between this and the defaulting 
+dti - Same as **** Debt-to-income ratio
+dti_joint - Debt-to-income ratio for coborrower Debt-to-income ratio *****
+earliest_cr_line - *****
+emp_length - ***** 0 - 10
+emp_title - *****
+fico_range_high  ***** Learn these 2
+fico_range_low *****
+funded_amnt *****
+funded_amnt_inv ***** Difference between these 2
+grade - What grades are Charged off ? May be useful
+home_ownership - RENT, OWN, MORTGAGE, OTHER. ***** 
+id - PK
+il_util - Parameter - factor - ***** Ratio like previous items
+initial_list_status - 
+inq_fi - *****  Customer desperate??
+inq_last_12m - ***** Credit line inquires in last 12 months ***** 
+inq_last_6mths *****  exclude auto - home
+installment ***** AMOUNT - EMI
+int_rate - ***** interest rate
+issue_d - Loan funding date - ANy relationship at all?
+last_credit_pull_d - 
+last_fico_range_high - ***** Read these 2 
+last_fico_range_low ***** 
+last_pymnt_amnt *****  last payment received
+last_pymnt_d ***** Boolean - Last month EMI paid?
+loan_amnt ***** Amount borrower asked for ***** 
+loan_status ***** IMPORTANT ***** this is the measure for us.
+max_bal_bc ***** What is a revolving account?
+member_id ***** Member ID - Does this repeat, check for uniqueness
+mo_sin_old_il_acct ***** 
+mo_sin_old_rev_tl_op***** 
+mo_sin_rcnt_rev_tl_op***** 
+mo_sin_rcnt_tl***** The last 4 talk about customer's history length - Learn about these terms
+mort_acc - ***** IMPORTANT - How many mortgage accounts does the borrower have
+mths_since_last_delinq - ***** Months since last delinquency
+mths_since_last_major_derog ***** 
+mths_since_last_record ***** 
+mths_since_rcnt_il ***** 
+mths_since_recent_bc ***** 
+mths_since_recent_bc_dlq ***** 
+mths_since_recent_inq ***** 
+mths_since_recent_revol_delinq ***** 
+next_pymnt_d
+num_accts_ever_120_pd ***** IMPORTANT
+num_actv_bc_tl ***** 
+num_actv_rev_tl ***** 
+num_bc_sats *****
+num_bc_tl *****
+num_il_tl *****
+num_op_rev_tl *****
+num_rev_accts *****
+num_rev_tl_bal_gt_0 *****
+num_sats *****
+num_tl_120dpd_2m *****
+num_tl_30dpd *****
+num_tl_90g_dpd_24m *****
+num_tl_op_past_12m *****  ALL THESE ABOVE WITH num_ are IMPORTANT. They MIGHT ahve a correlation to loan status
+open_acc 
+open_acc_6m
+open_il_12m
+open_il_24m
+open_il_6m
+open_rv_12m
+open_rv_24m -  *****ALL THESE OPEN_ params might be used - Read about 'revolving"
+out_prncp - Outstanding principal
+out_prncp_inv - 
+pct_tl_nvr_dlq -  *****POSITIVE param
+percent_bc_gt_75 -  ***** NEGATIVE
+policy_code - 
+pub_rec -  ***** NEGATIVE PARAM
+pub_rec_bankruptcies  ***** NEGATIV
+purpose - Mine this to know the reason. Might have negative correlation.  *****
+pymnt_plan  - 
+recoveries
+revol_bal
+revol_util - Sounds technical - read this.
+sub_grade - Grade / sub-grade by LC
+tax_liens - ?????   *****
+term - 36 or 60 months
+title - * Employer Title replaces Employer Name for all loans listed after 9/23/2013
+tot_coll_amt -  ***** 
+tot_cur_bal -  *****
+tot_hi_cred_lim - 
+total_acc
+total_bal_ex_mort
+total_bal_il
+total_bc_limit
+total_cu_tl -  ***** Number  of finance trades - How many purchases the person does???
+total_il_high_credit_limit - 
+total_pymnt  ***** Total Payment received
+total_pymnt_inv
+total_rec_int -  ***** Interest received
+total_rec_late_fee  ***** late fees
+total_rec_prncp - Principal received  *****
+total_rev_hi_lim  
+url
+verification_status  ***** Income verified by LC or NOT
+verified_status_joint -  ***** Same as above
+zip_code - First 3 numbers in Zzip code
+
+* Employer Title replaces Employer Name for all loans listed after 9/23/2013
+
+
+
+
+
