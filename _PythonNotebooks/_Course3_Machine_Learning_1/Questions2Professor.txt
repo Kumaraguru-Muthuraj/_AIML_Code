@@ -1,0 +1,9 @@
+Your explanation about Normal Distribution is not well understood
+What is normalisation. I get the process of representing the (x - mean)/S.D, but just because we do it, why would a population become normal?
+Consider an example - Consider the population of leaves in a large tree nearby. The size (as area) of leaves is Normaly Distributed? The colloquial definition is that everything in Nature is normally distributed, but we cannot take it for granted. So we need to take the leaves, measure the sizes. For each leaf, get the (area - Mean)/S.D. This is Normaly Distribted right? But when we were taught, we were told Normalization is done, just for ease of visualization. 
+Now the number of leaves in a tree could be 1M and its not possible to do this. But we can take 1000 leaves from different places in the tree and do this experiment. Right?
+
+Now, consider I have about 50 trees of same age, grown in a farm. I want to understand what factors, say Zinc Zulphate, Mg Sulphate, Ready made plant food, Treated water from apartments, NPS etc., affect plant growth measured as leaf size.
+
+My question is why is that we always assume relaltionship is linear. In nature, we have functions of so many types. What do we do for these problems? For example, excess fertilizer could damage growth. In these cases, the leaf sizes or number of leaves will tell the health, right?
+

@@ -1,0 +1,22 @@
+
+### All 3 loan types filtered out for 2011
+#### Risk 1 - Loan grades E, F and G are higher risk loans. Looks like LC is already charging higher interest rate to recover faster. When LC issues a high loan amount they have to look at other risk factors listed further. 
+#### Risk 2 - Most of the loans above interest rate 15% are at the risk of being charged-off. Higher the interest rate they might be charged-off.
+#### Risk 3 - Looks like charged-off loans are from a slightly higher loan amount in the order of 12K and higher. Higher the loan amount its more risky.
+#### Risk 4 - Debt consolidation, credit card, small business, other and home improvement reasons have highest charged off debts. 
+#### Risk 5 - Rental and Mortage home dwellers have higher charged-off status than owners. A customer from rental home is risky, followed by mortgagers.
+#### Risk 6 - The ratio of bankruptcy counts to none is higher for charged-off customers. If a customer declared bankruptcy before, he is more likely to default.
+#### Risk 7 - States grouped based on geography, indicate West region has taken more loans. A loan request from western states is risky, especially California. 
+
+Charged-off loans by Top 4 States, Top 4 issue months and Top 4 purposes.
+#### Risk 8 - For either terms, if the interest rate is either reduced or increased, defaulting behavior can be reduced. Might sound like a  conflict with Risk 2, but this is a drilled down version. This overrides the previous pattern.
+#### Risk 9 - Its risky to give loans to customers with credit history between 5 to 15 years. For both terms with credit_history, note that the defaulters drastically reduce for both terms 36 and 60 as the credit_history (age of the person) increases. 
+#### Risk 10 - Issuing loans in Sep-Dec (specifically Nov and Dec), for the 4 states with debt consolidation as purpose is risky. Customers ask for loan with debt consolidation as a reason in the 4 (especially California) states and default maximum. Towards the end of the year, as celebration begins, customers prepare to take the loan and spend-off and default.
+#### Risk 11 - Giving loan to a customer with credit history between 5 - 15 years in the top 4 states, for the last quarter of the year, for top 4 purposes is risky.
+#### Risk 12 - Lending money to customers fitting top 4 criteria with employment length less than 2 years is risky.
+#### Risk 13 - If a customer fitting top 4 criteria in rental home, applies for loan with purpose debt consolidation in the last 4 months, its risky.
+#### Risk 14 - For rental customers, revolving utilization is highest, and specifically, it reduces as they spend more number of years with the same employer. So many reasons for calling rental clients risky.
+#### Risk 15 - When loans are issued without source verification, they are very risky.
+#### Risk 16 - Rental home defaulters, default within the first 6, 12 and 18 months, if they are employed for a shorter time in their current job.
+#### Risk 17 - Its risky to give loan to rental customers, because its risky to recover the amount incase of default.
+#### Risk 18 - Risky to give loans to rental customers with higher DTI.
