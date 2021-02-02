@@ -1,0 +1,118 @@
+You want to find an efficient method and write a code for this process. 
+The code will take two strings as input in two lines. The first string will contain letters on the crossword("cwd"), and the second string will contain a word that you want to check.(i.e. you want to check whether the word can be made out of given letters in the same order).
+The output should say "yes" if the word can be formed, else it should say "no"
+Sample Input 1:
+ccwd
+crossword
+Sample Output1:
+no
+
+Sample Input 2:
+cwd
+crossword
+Sample Output 2:
+yes
+
+Note: Using regex is also one of the ways of solving this problem. You can read more about regex(regular expressions) here. Although, you can simply use loops and conditionals too to solve the problem.
+
+
+Write a Python program to divide a given list into chunks of size k.
+
+The number of elements in the list need not to be divisible by k.
+For example, if you want to divide the list [1,2,3,4,5,6,7] into chunk size k=4, then the first chunk will be [1,2,3,4] and the second one will have [5,6,7]. i.e. the last chunk need not have k elements.
+The input will have two lines, the first line would have the list and the second line would have the value of k.(the code for taking input has already been written, you should not change that)
+The final output should have the list chunks in different lines.
+
+Sample Input:
+[1,2,3,4,5,6,7,8,9]
+3
+Sample Output:
+
+
+Paying the rent
+You are moving to a new city for an internship for a few months and have to rent a house for that purpose.
+You have to pay the full month's house rent even if you have lived for a few days for that month. i.e. if you start on 15th Jan and leave by 15th May, you still have to pay full rent for months of Jan and May too.
+
+Your task is to find the months that you have to pay rent for so that you can write post-dated cheques to your landlord.
+
+You will be given two dates as input and your task is to print all months between the dates including the months the dates are from.
+The input will contain the two dates in a list as follows:
+[2017,1,1,2017,3,4] which corresponds to 1st Jan, 2017 and 4th March, 2017. This date is in the format(yyyy,mm,dd)
+(the code for taking input has already been written for you, please don't modify that)
+The output should contain a list with names of months you have to pay the rent for(the list should be sorted chronologically  based on months, i.e May should come before August). You can assume that there won't be more than 12 months between two dates.
+You'll need to use the datetime module for this problem which can be referred to here. You can choose to use any other method too.
+
+Sample Input:
+[2017,1,1,2017,1,1]
+Sample Output:
+['January']
+
+This question was asked in a Data Analyst cod
+
+Remove empty lists
+Write a Python program to eliminate all empty lists from a given list of lists.
+The input will have a list of lists and the output should have the resulting list after eliminating empty lists from it.
+
+Sample Input:
+[[1,2,3],[],[4,5],[],[],[6,7,8]]
+
+Sample Output:
+[[1, 2, 3], [4, 5], [6, 7, 8]]
+
+-------------------------------------------------------------------------
+import re
+from functools import reduce
+import numpy as np
+letters=input()#letters already in the crossword
+guess=input()#word to check for fit
+lst = list(letters)
+
+regex = reduce(lambda x, y: x + ".*" + y, lst)
+regex = "^" + regex + "$"
+x = re.findall(regex, guess)
+
+if len(x) == 0:
+    print("no")
+else:
+    print("yes")
+
+-------------------------------------------------------------------------
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+lis=input_list[0]
+k=input_list[1]
+for i in range(0, len(lis), k):  
+    print(lis[i:i + k]) 
+-------------------------------------------------------------------------
+letters=input()#letters already in the crossword
+guess=input()#word to check for fit
+i = 0
+for w in guess:
+    if w == letters[i]: 
+        i += 1
+        if i >= len(letters): break
+
+if (i == len(letters)):
+    print('yes')
+else:
+    print('no')
+-------------------------------------------------------------------------
+import datetime
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+dateStart=datetime.date(input_list[0],input_list[1],input_list[2])
+dateEnd=datetime.date(input_list[3],input_list[4],input_list[5])
+months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+ans = set()
+while dateStart <= dateEnd:
+	ans.add(dateStart.month)
+	dateStart += datetime.timedelta(1)
+print([months[x-1] for x in sorted(ans)])
+-------------------------------------------------------------------------
+import ast,sys
+input_str = sys.stdin.read()
+input_list = ast.literal_eval(input_str)
+list=[l for l in input_list if l] 
+print(list)
