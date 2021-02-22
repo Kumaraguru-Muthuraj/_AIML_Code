@@ -1,5 +1,32 @@
-Which variables are significant in predicting the price of a house.
+Which variables are significant in predicting the price of a house?
 
+The TOP 5 features impacting sales price by each algorithm (decided by the magnitude of the betas)
+Linear Regression - 'R2Train': 0.92, 'R2Test': 0.81
+RoofMatl_membran    0.619758
+Condition2_posn     -0.571398
+RoofMatl_wdshngl    0.552684
+RoofMatl_metal      0.513750
+RoofMatl_roll       0.511392
 
-How well those variables describe the price of a house.
-Lambda for Ridge and Lasso.
+Ridge Regularization - 'R2Train': 0.89, 'R2Test': 0.86, Best lambda - 1.5
+Condition2_posn     -0.176019
+2ndFlrSF            0.123256
+1stFlrSF            0.119751
+OverallQual         0.113508
+RoofMatl_wdshngl    0.098919
+
+Lasso Regularization - 'R2Train': 0.90, 'R2Test': 0.84, Best lambda - 0.0001
+Condition2_posn    -0.365658
+2ndFlrSF           0.170472
+1stFlrSF           0.166152
+OverallQual        0.125641
+YearBuilt          0.087396
+
+How well those variables describe the price of a house?
+These are the variables that were arrived after applying RFE in Linear Regression, Ridge and Lasso Regularizations.
+The R2 values for the 3 algorithms are listed above. Notice that these are pretty close ~5%, except for Linear Regression. LR accuracy was low
+due to the variance and we had to reduce it with regularization. The Regularization algorithms have given reasonable accuracies in test data.
+The residual analysis for the 3 algorithms indicate homoscedasticity, no patterns in errors, errors are normally distributed around 0.
+
+Lambda for Ridge and Lasso - The lambdas for Ridge and Lasso are 1.5 and 0.0001 respectively.
+
