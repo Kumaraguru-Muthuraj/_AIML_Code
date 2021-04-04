@@ -1,0 +1,24 @@
+We observe that most of the indicators are from the 8th month where some activity of the customer indicates churn in the upcoming month. 
+
+All the coefficients, except roam_og_mou_8 and max_rech_data_8, are negative indicating that a decrease in the values of these features indicate that there is a correlation to churn. Increase in roam_og_mou_8 and max_rech_data_8 also indicate a correlation to churn.
+
+An increase in the following 2 feature values indicate that the expenditure of the customer is high and hence some kind od discount / package can be provided around these.
+roam_og_mou_8 - Roaming outgoing minutes of usage in 8th month.
+max_rech_data_8 - Maximum recharge data in 8th month.
+
+A decrease in the following feature values indicate that the customer is on the way to churn as his usage decreased. Some package can be provided intermittently to keep him active and spend more.
+loc_ic_mou_8 - Local incoming minutes of usage in 8th month.
+loc_og_t2m_mou_8 - Local outgoing to other operators in 8th month.
+total_og_mou_8 - Total outgoing minutes of usage in the 8th month.
+last_day_rch_amt_8 - Last day recharge amount in 8th month.
+loc_ic_t2t_mou_8 - Local incoming from same operator in 8th month.
+diff_total_rech_num - Derived field indicating recharge amount difference between 6+7 months and 8th
+diff_total_ic_mou - Derived field indicating total incoming minutes of usage difference between 6+7 months and 8th.
+std_ic_mou_8 - Std, incoming minutes of usage in 8th month.
+av_rech_amt_data_8 - Average recharge amount of data in 8th month.
+vol_2g_mb_8 - Volume of 2g data usage in 8th month.
+diff_roam_ic_mou - Roaming incoming minutes of usage difference between 6+7 months and 8th.
+diff_max_rech_amt - Maximum recharge amount difference between 6+7 months and 8th.
+std_ic_t2m_mou_8 -  Std incoming from other operators in 8th month. 
+
+
