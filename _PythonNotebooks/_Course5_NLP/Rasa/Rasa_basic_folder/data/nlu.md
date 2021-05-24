@@ -22,6 +22,7 @@
 - correct
 - great choice
 - sounds really good
+- good afternoon
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -165,7 +166,13 @@
 - show me some good places for dinner
 - [bangalore](location)
 - show me some good restaurants for lunch
-- [Chinese]{"entity": "cuisine", "value": "chinese"}
+- show me restaurants in [bangalore](location)
+- show me some good restaurants
+- show food places
+- show some restauratns
+- show me good restaurants
+- [bangalore](location)
+- [chinese](cuisine)
 
 ## intent:goodbye
 - bye
@@ -201,6 +208,9 @@
 - great choice
 - sounds really good
 - thanks
+- my email id is [muthurajguru@yahoo.com](email)
+- can you email this
+- send to [muthurajguru@yahoo.com](email)
 
 ## intent:deny
 - no. thanks
