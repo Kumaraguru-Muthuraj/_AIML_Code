@@ -1,50 +1,103 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-- affirm
-- restaurant_search
 - greet
+- restaurant_search
+- affirm
+- deny
 - goodbye
-- stop
+- thankyou
 entities:
 - cuisine
+- email
 - location
 - price
-- people
 slots:
-  cuisine:
-    type: text
   location:
     type: text
+    influence_conversation: true
+  cuisine:
+    type: categorical
+    influence_conversation: true
+    values:
+    - chinese
+    - italian
+    - north indian
+    - south indian
+    - american
+    - mexican
+  email:
+    type: text
+    influence_conversation: true
+  location_found:
+    type: categorical
+    influence_conversation: true
+    values:
+    - notfound
+    - tier3
+    - found
+  price:
+    type: categorical
+    influence_conversation: true
+    values:
+    - lesser than 300
+    - between 300 to 700
+    - more than 700
 responses:
-  utter_ask_cuisine:
-  - buttons:
-    - payload: Chinese
-      title: Chinese
-    - payload: Italian
-      title: Italian
-    - payload: South Indian
-      title: South Indian
-    - payload: North Indian
-      title: North Indian
-    text: what kind of cuisine would you like?
-  utter_ask_howcanhelp:
-  - text: how can I help you?
-  utter_ask_location:
-  - text: In what location?
-  utter_default:
-  - text: i cannot understand
   utter_goodbye:
   - text: goodbye :(
   - text: Bye-bye
+  utter_default:
+  - text: default message
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_price:
+  - text: |-
+      What's the average budget for two people? 
+      1. Lesser than 300 
+      2. between 300 to 700
+      3. More than 700
+  utter_ask_location:
+  - text: In which city?
+  utter_ask_cuisine:
+  - text: |-
+      What kind of cuisine would you like to have? 
+       1. Chinese 
+       2. Italian 
+       3. South Indian 
+       4. North Indian 
+       5. Mexican 
+       6. American
+  utter_ask_mail:
+  - text: To what email address should I send the restaurant details
+  - text: Share the recipient email address
+  utter_final_bye:
+  - text: Okay!Bon Appetit!
+  utter_location_notfound:
+  - text: Sorry, location not found. Please specify the location again
+  utter_foodie_not_working:
+  - text: Sorry, Foodie is not working in this area. Can you please suggest some other location
+  utter_ask_whethermail:
+  - text: You want the details to me mailed?
   utter_greet:
   - text: hey there! How may i help you
   - text: Hi, How can I help you!
   - text: Hey, How is it going. How May I help you Today
 actions:
+- action_check_location
 - action_search_restaurants
-- action_send_mail
+- email_restaurant_details
 - utter_ask_cuisine
 - utter_ask_howcanhelp
 - utter_ask_location
+- utter_ask_mail
+- utter_ask_price
+- utter_ask_whethermail
 - utter_default
+- utter_final_bye
+- utter_foodie_not_working
 - utter_goodbye
 - utter_greet
+- utter_location_notfound

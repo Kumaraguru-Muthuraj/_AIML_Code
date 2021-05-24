@@ -16,14 +16,19 @@ def RestaurantSearch(City,Cuisine):
 	TEMP = ZomatoData
 	return TEMP[['Restaurant Name','Address','Average Cost for two','Aggregate rating']]
 
+
 class ActionSearchRestaurants(Action):
 	def name(self):
 		return 'action_search_restaurants'
 
 	def run(self, dispatcher, tracker, domain):
+		dispatcher.utter_message("***INSIDE SEARCH**")
 		#config={ "user_key":"f4924dc9ad672ee8c4f8c84743301af5"}
 		loc = tracker.get_slot('location')
 		cuisine = tracker.get_slot('cuisine')
+		dispatcher.utter_message("***LOC***" + loc)
+		dispatcher.utter_message("***CUISINE***" + cuisine)
+
 		results = RestaurantSearch(City=loc,Cuisine=cuisine)
 		response=""
 		if results.shape[0] == 0:
@@ -36,11 +41,26 @@ class ActionSearchRestaurants(Action):
 		dispatcher.utter_message("-----"+response)
 		return [SlotSet('location',loc)]
 
-class ActionSendMail(Action):
-	def name(self):
-		return 'action_send_mail'
 
+class SendMail(Action):
+	def name(self):
+		return 'email_restaurant_details'
+		
 	def run(self, dispatcher, tracker, domain):
-		MailID = tracker.get_slot('mail_id')
-		sendmail(MailID,response)
-		return [SlotSet('mail_id',MailID)]
+		recipient = tracker.get_slot('email')
+
+		top10 = restaurants.head(10)
+		print("got this correct email is {}".format(recipient))
+		send_email(recipient, top10)
+
+		dispatcher.utter_message("Have a great day!")
+
+class Check_location(Action):
+	def name(self):
+		return 'action_check_location'
+		
+	def run(self, dispatcher, tracker, domain):
+		loc = tracker.get_slot('location')
+		check = check_location(loc)
+		
+		return [SlotSet('location',check['location_new']), SlotSet('location_found',check['location_f'])]
