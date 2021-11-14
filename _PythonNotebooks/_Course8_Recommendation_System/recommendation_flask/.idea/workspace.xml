@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64c54032-d53f-4b78-98da-0c128f647ce6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.ipynb_checkpoints/SentimentBasedRecommendationSystemV4_Documented-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../.ipynb_checkpoints/SentimentBasedRecommendationSystemV4_Documented-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SentimentBasedRecommendationSystemV4_Documented.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../SentimentBasedRecommendationSystemV4_Documented.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="64c54032-d53f-4b78-98da-0c128f647ce6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
