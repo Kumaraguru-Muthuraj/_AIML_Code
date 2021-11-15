@@ -17,10 +17,21 @@ from flask import Flask, redirect, url_for, request, render_template, jsonify
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
 
+# importing required modules
+from zipfile import ZipFile
 import joblib
 
 app = Flask(__name__)
 
+def unzipPklFile():
+    # specifying the zip file name
+    file_name = "userFinalRating.zip"
+
+    # opening the zip file in READ mode
+    with ZipFile(file_name, 'r') as zip:
+        zip.extractall()
+
+unzipPklFile()
 ratingsMatrix = joblib.load('userFinalRating.pkl')
 productClass = joblib.load('product_class.pkl')
 
